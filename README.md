@@ -50,6 +50,21 @@
     * `sudo apt-get install python3-smbus i2c-tools`
 * ssh-keygen
     * Github用に生成、登録する。
+    * `sudo apt-get install git`
+
+### vim設定
+
+`sudo apt-get install vim` 実行
+
+`~/.vimrc`に下記を記載
+
+```
+set encoding=utf-8
+set fileencodings=utf-8
+set fileformats=unix,dos,mac
+
+syntax on
+```
 
 ### イメージバックアップ
 
