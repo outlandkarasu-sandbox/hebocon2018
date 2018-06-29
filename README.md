@@ -51,6 +51,9 @@
 * ssh-keygen
     * Github用に生成、登録する。
     * `sudo apt-get install git`
+    * `git config --global user.name "user name"`
+    * `git config --global user.email "user.name@mail.com"`
+    * `git config --global core.editor 'vim -c "set fenc=utf-8"'`
 
 ### vim設定
 
