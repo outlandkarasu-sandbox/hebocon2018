@@ -7,3 +7,7 @@
 
 * [Pinout](https://www.arduino.cc/en/uploads/Main/ArduinoMicro_Pinout3.png)
 
+### TA7291P
+
+* [データシート](http://akizukidenshi.com/download/ta7291p.pdf)
+
