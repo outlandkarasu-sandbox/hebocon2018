@@ -30,3 +30,15 @@
     * `ssh pi@raspberrypi.local`で接続可能
         * 初期パスワードは`raspberry`
 
+### 設定
+
+* `pi`ユーザーパスワード変更
+    * `sudo passwd pi`
+* タイムゾーン変更
+    * `sudo raspi-config`
+* Wifi国指定
+    * `sudo raspi-config`
+* ホスト名変更
+    * `sudo raspi-config`で`Advanced Options` > `Hostname`
+* AP化
+    * [公式ドキュメント](https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md)
