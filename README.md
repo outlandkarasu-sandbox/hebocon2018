@@ -42,6 +42,14 @@
     * `sudo raspi-config`で`Advanced Options` > `Hostname`
 * AP化
     * [公式ドキュメント](https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md)
+* pipインストール
+    * `sudo apt-get install python3-pip`
+    * `pip3 install tornado`
+* I2C有効化
+    * `sudo raspi-config`
+    * `sudo apt-get install python3-smbus i2c-tools`
+* ssh-keygen
+    * Github用に生成、登録する。
 
 ### イメージバックアップ
 
