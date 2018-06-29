@@ -42,3 +42,9 @@
     * `sudo raspi-config`で`Advanced Options` > `Hostname`
 * AP化
     * [公式ドキュメント](https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md)
+
+### イメージバックアップ
+
+* Macで下記を実行する。
+    * `tar -zcvf /yourflashdrive/raspbian.tar.gz dev/mmcblk0p1`
+
