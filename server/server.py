@@ -18,6 +18,8 @@ settings = {
     "static_path": os.path.join(os.path.dirname(__file__), "static")
 }
 
+motorSpeeds = [0, 0]
+
 class MainHandler(tornado.web.RequestHandler):
     """ インデックスページ表示
     """
@@ -45,8 +47,9 @@ class MotorHandler(tornado.web.RequestHandler):
         """ モーター情報の設定
         """
         json = escape.json_decode(self.request.body)
-        speed = json.speed if json is not None and json.speed is not None else 0
-        bus.write_i2c_block_data(I2C_ADDRESS_DXM, ord('M'), json.speed, json.speed)
+        if json is not None and json["speed"] is not None:
+            motorSpeeds[int(id) - 1] = int(json["speed"])
+            bus.write_i2c_block_data(I2C_ADDRESS_DXM, ord('M'), motorSpeeds)
         self.set_status(204)
 
 if __name__ == "__main__":
