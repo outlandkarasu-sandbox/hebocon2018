@@ -3,9 +3,9 @@
 
 ## ハードウェア情報
 
-### Arduino Micro
+### Arduino Mini Pro
 
-* [Pinout](https://www.arduino.cc/en/uploads/Main/ArduinoMicro_Pinout3.png)
+* [回路図](https://www.arduino.cc/en/uploads/Main/Arduino-Pro-Mini-schematic.pdf)
 
 ### TA7291P
 
