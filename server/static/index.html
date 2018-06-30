@@ -5,6 +5,40 @@
 </head>
 <body>
 <h1>test</h1>
+<table>
+<tr><th>Turn</th><td><input id="turnRange" type="range" min="-128" max="127"></input></td></tr>
+<tr><th>Speed</th><td><input id="speedRange" type="range" min="0" max="255"></input></td></tr>
+</table>
+<script>
+
+const turnRange = document.getElementById('turnRange');
+const speedRange = document.getElementById('speedRange');
+
+const roundSpeed = function(speed) {
+    return Math.min(Math.max(0, Math.round(speed)), 255);
+}
+
+const postRequest = function() {
+    const turn = Number(turnRange.value);
+    const speed = Number(speedRange.value);
+
+    const turn1 = (turn < 0) ? (turn / -128.0) : 0.0;
+    fetch('/v1/motor/1', {
+        body: JSON.stringify({speed: roundSpeed(speed - 255.0 * turn1)}),
+        method: 'POST'
+    });
+
+    const turn2 = (turn > 0) ? (turn / 127.0) : 0.0;
+    fetch('/v1/motor/2', {
+        body: JSON.stringify({speed: roundSpeed(speed - 255.0 * turn2)}),
+        method: 'POST'
+    });
+};
+
+turnRange.addEventListener('change', postRequest);
+speedRange.addEventListener('change', postRequest);
+
+</script>
 </body>
 </html>
 
