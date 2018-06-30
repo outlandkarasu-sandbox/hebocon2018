@@ -5,6 +5,13 @@ import tornado.ioloop
 import tornado.web
 import tornado.escape as escape
 import os
+import smbus
+from logging import getLogger
+
+I2C_PORT = 1
+I2C_ADDRESS_DXM = 8
+
+bus = smbus.SMBus(I2C_PORT)
 
 # 各種設定
 settings = {
@@ -28,13 +35,19 @@ class MotorHandler(tornado.web.RequestHandler):
     def get(self, id):
         """ モーター情報の取得
         """
-        self.write({"id": id})
+        data = bus.read_i2c_block_data(I2C_ADDRESS_DXM, 0)
+        self.write({
+            "id": id,
+            "speed": data[int(id) - 1],
+        })
 
     def post(self, id):
         """ モーター情報の設定
         """
         json = escape.json_decode(self.request.body)
-        self.write({"id": id})
+        speed = json.speed if json is not None and json.speed is not None else 0
+        bus.write_i2c_block_data(I2C_ADDRESS_DXM, ord('M'), json.speed, json.speed)
+        self.set_status(204)
 
 if __name__ == "__main__":
     application = tornado.web.Application([
